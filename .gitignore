@@ -2,3 +2,4 @@
 .streamlit
 .streamlit/secrets.toml
 .python-version
+file/

@@ -87,7 +87,7 @@ def toolbar():
     with cols[2]:
         st.text(f"{st.session_state['index'] + 1}/{len(st.session_state['completions'])}")
     with cols[3]:
-        if st.button(label='>', key='next'):
+        if st.button(label='\>', key='next'):
             on_next()
 
 
@@ -129,7 +129,7 @@ if __name__ == '__main__':
         else:
             curr_text = st.session_state['completions'][st.session_state['index']]
             st.subheader(f'Generated Email')
-            st.text_area(label="", value=curr_text.strip(), height=400)
+            st.text_area(label=" ", value=curr_text.strip(), height=400)
             st.write(f"Number of words: {len(curr_text.split())}")
             if len(st.session_state['completions']) > 1:
                 toolbar()

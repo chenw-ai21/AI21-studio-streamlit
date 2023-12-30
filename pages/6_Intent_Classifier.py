@@ -45,6 +45,7 @@ if __name__ == "__main__":
         prompt = f"{instruction}\n{st.session_state['classes']}\n\nQuestion:\n{st.session_state['question']}\n\nClass:\n"
         num_tokens = len(tokenize(prompt))
         responses = batch_responses([prompt + c for c in st.session_state['classes'].split('\n')])
+        # responses = batch_responses([prompt + c for c in st.session_state['classes'].split('\n')])
         results = {}
         for i, r in enumerate(responses):
             token_list = [t['generatedToken'] for t in r['prompt']['tokens'][num_tokens:] if t['generatedToken']['token'] != '<|newline|>']

@@ -60,5 +60,5 @@ if __name__ == '__main__':
         with col2:
             st.markdown(f"{curr_index+1}/{len(suggestions)}")
         with col3:
-            st.button(">", on_click=show_next, args=(len(suggestions),))
+            st.button("\>", on_click=show_next, args=(len(suggestions),))
 

@@ -9,7 +9,7 @@ import os
 max_chars = 200000
 
 
-def merge_segments(segments, max_char=200000):
+def merge_segments(segments, max_char=2000):
     res = list()
     curr = ''
     for s in segments:
@@ -58,7 +58,7 @@ def parse_file(uploaded_file):
         else:
             with pdfplumber.open(uploaded_file) as pdf:
                 all_text = [p.extract_text() for p in pdf.pages]
-    
+
             filtered = [i.strip() for i in all_text]
             filtered = ['\n'.join([i.strip() for i in page.split('\n')[:-1]]).strip() for page in filtered]
             filtered = [re.sub(' +', ' ', i) for i in filtered]
@@ -66,7 +66,7 @@ def parse_file(uploaded_file):
         
         files_paths = write_to_library(segmented_text, uploaded_file.name)
         return files_paths
-        
+
 
 def upload_file(files_paths):
     files_ids = []
@@ -85,6 +85,7 @@ def upload_file(files_paths):
 def parse_and_upload_file(uploaded_file):
     files_ids = parse_file(uploaded_file)
     upload_file(files_ids)
+
     return
 
 
@@ -97,14 +98,12 @@ if __name__ == '__main__':
     st.title("Document Q&A")
     st.markdown("**Upload a document**")
     
-    if 'file_uploaded' not in st.session_state:
-        uploaded_file_g = st.file_uploader("choose .pdf/.txt file ", type=["pdf", "text", "txt"], key="a")
-        if uploaded_file_g:
-            parse_and_upload_file(uploaded_file_g)
-    else:
-        st.file_uploader("choose .pdf/.txt file ", type=["pdf", "text", "txt"], disabled=True, key='a')
-        st.write("Don't forget to remove your file before uploading a new one")
-        st.markdown("**Please remove your file before leaving...**")
+    uploaded_files = st.file_uploader("choose .pdf/.txt file ",
+                                      accept_multiple_files=True,
+                                      type=["pdf", "text", "txt"],
+                                      key="a")
+    for uploaded_file_g in uploaded_files:
+        parse_and_upload_file(uploaded_file_g)
         
     if st.button("Remove file"):
         if 'files_ids' in st.session_state:

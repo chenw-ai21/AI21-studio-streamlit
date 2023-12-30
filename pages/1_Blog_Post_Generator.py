@@ -255,7 +255,7 @@ if __name__ == '__main__':
 
     sections = []
     if st.session_state['show_outline']:
-        text_area_outline = st.text_area(label="", height=250, value=st.session_state["outline"],
+        text_area_outline = st.text_area(label=" ", height=250, value=st.session_state["outline"],
                                          on_change=on_outline_change)
         sections = text_area_outline.split("\n")
         st.text("Unsatisfied with the generated outline? Click the 'Generate Outline' button again to re-generate it, or edit it inline.")
