@@ -13,6 +13,7 @@ This repository demonstrates the following examples of AI21 LLM use cases with S
 - Single and Multiple Document Q&A
 
 ## Demo App
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]([https://langchain-quickstart.streamlit.app/](https://ai21-studio-app-demo-test1.streamlit.app/))
 
 # Setup the app with your AI21 account 
 - Create `secrets.toml` in `.streamlit` folder,  and add your credentials (replace `<YOUR_API_KEY>` with your AI21 API Key):
