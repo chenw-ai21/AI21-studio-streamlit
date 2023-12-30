@@ -1,4 +1,4 @@
-# AI21 Studio Demos <img width="127" alt="Screenshot 2023-12-29 at 10 00 27 PM" src="https://github.com/chenw-ai21/ai21-studio-streamlit/assets/153112649/77f8ecac-c17f-4a05-89b3-b816bca5dfff">
+# AI21 Studio Demos ![Screenshot 2023-12-29 at 10 17 29 PM](https://github.com/chenw-ai21/ai21-studio-streamlit/assets/153112649/bada99f4-de60-4208-8ce7-a2fbc9fbaaf8)
 
 
 This repository demonstrates the following examples of AI21 LLM use cases with Streamlit apps:
@@ -11,7 +11,7 @@ This repository demonstrates the following examples of AI21 LLM use cases with S
 - Contextual Answers
 - Single and Multiple Document Q&A
 
-# Demo App
+## Demo App
 
 # Setup the app with your AI21 account 
 - Create 'secrets.toml' in '.streamlit' folder,  and add your credentials (replace <YOUR_API_KEY> with your AI21 API key):
