@@ -1,6 +1,4 @@
-
-![studio_logo](https://github.com/chenw-ai21/ai21-studio-streamlit/assets/153112649/b38492fb-23df-4911-ab05-b934c96892ae)
-<img width="223" alt="Screenshot 2023-12-29 at 10 24 26 PM" src="https://github.com/chenw-ai21/ai21-studio-streamlit/assets/153112649/868af863-3490-42d6-9cf6-7c234f9df90b">
+<img width="346" alt="Screenshot 2023-12-29 at 10 26 17 PM" src="https://github.com/chenw-ai21/ai21-studio-streamlit/assets/153112649/dd66ba69-3dbf-43c2-a5a4-2d048b389f06">
 
 # AI21 Studio Demos
 
