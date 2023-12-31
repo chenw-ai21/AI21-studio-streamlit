@@ -2,6 +2,7 @@
 .streamlit
 .streamlit/secrets.toml
 .python-version
-file/
 .DS_Store
+file/
 _pycache_/
+.devcontainer/
