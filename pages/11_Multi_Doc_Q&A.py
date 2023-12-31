@@ -9,7 +9,7 @@ import os
 max_chars = 200000
 
 
-def merge_segments(segments, max_char=2000):
+def merge_segments(segments, max_char=200000):
     res = list()
     curr = ''
     for s in segments:
