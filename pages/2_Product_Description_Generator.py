@@ -14,7 +14,7 @@ def query(prompt):
         "maxTokens": 240,
         "temperature": 1,
         "topKReturn": 0,
-        "topP":0.98,
+        "topP": 0.98,
         "countPenalty": {
             "scale": 0,
             "applyToNumbers": False,
@@ -38,8 +38,8 @@ def query(prompt):
             "applyToStopwords": False,
             "applyToWhitespaces": False,
             "applyToEmojis": False
-      },
-      "stopSequences":["##"]
+        },
+        "stopSequences": ["##"]
     }
 
     res = complete(model_type=DEFAULT_MODEL,
@@ -54,7 +54,6 @@ if __name__ == '__main__':
     apply_studio_style()
     st.title("Product Description Generator")
     st.markdown("###### Create valuable marketing copy for product pages that describes your product and its benefits within seconds! Simply choose a fashion accessory, a few key features, and let our tool work its magic.")
-
 
     product_input = st.text_input("Enter the name of your product:", value="Talking Picture Oxford Flat")
     features = st.text_area("List your product features here:", value="- Flat shoes\n- Amazing chestnut color\n- Man made materials")
@@ -72,7 +71,3 @@ if __name__ == '__main__':
         result = st.session_state["short-form-result"]["completion"]
         st.text("")
         st.text_area("Generated Product Description", result, height=200)
-
-
-
-

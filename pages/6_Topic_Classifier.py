@@ -25,7 +25,7 @@ def query(prompt):
 if __name__ == '__main__':
 
     apply_studio_style()
-    st.title("The Topic Classifier")
+    st.title("Topic Classifier")
     st.write("Read any interesting news lately? Let's see if our topic classifier can skim through it and identify whether its category is sports, business, world news, or science and technology.")
     st.session_state['classification_model'] = DEFAULT_MODEL
 

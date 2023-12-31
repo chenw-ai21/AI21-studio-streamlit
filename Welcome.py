@@ -8,6 +8,5 @@ if __name__ == '__main__':
     )
     apply_studio_style()
     st.title("Welcome to AI21 Studio demos")
-    st.markdown("Experience the incredible power of large language models first-hand. With these demos, you can explore a variety of unique use cases that showcase what our sophisticated technology is truly capable of. From instant content generation to a paraphraser that can rewrite any text, the world of AI text generation will be at your fingertips." )
-    st.markdown("Check out the brains behind the demos here: https://www.ai21.com/studio")
-    st.markdown("Please note that this is a limited demonstration of AI21 Studio's capabilities. If you're interested in learning more, contact us at studio@ai21.com")
+    st.markdown("Experience the incredible power of AI21's large language models first-hand. With these demos, you can explore a variety of unique use cases, from instant content generation to paraphraser that rewrite text." )
+    st.markdown("If you're interested in learning more, sign up for a free trial account here: https://www.ai21.com/studio, or contact us at studio@ai21.com")

@@ -40,4 +40,3 @@ if __name__ == '__main__':
             st.write('Text is too long for the document summarizer, please try the segment summarizer instead.')
         else:
             st.text_area(label="Summary", height=250, value=st.session_state["summary"])
-

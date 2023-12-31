@@ -2,6 +2,7 @@ import asyncio
 import math
 import streamlit as st
 from constants import DEFAULT_MODEL
+from utils.studio_style import apply_studio_style
 from utils.completion import async_complete, tokenize
 import re
 
@@ -9,7 +10,7 @@ import re
 OTHER_THRESHOLD = 0.2
 
 st.set_page_config(
-    page_title="Intent Classifier",
+    page_title="Text Classifier",
 )
 
 
@@ -22,7 +23,7 @@ def generate_response(prompt, delay):
 
 
 def batch_responses(prompts, delay=0.25):
-    delay = delay if len(prompts) >= 5 else 0 # may deal with less than 5 requests in 1 second
+    delay = delay if len(prompts) >= 5 else 0  # may deal with less than 5 requests in 1 second
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     group = asyncio.gather(*[generate_response(p, i*delay) for i, p in enumerate(prompts)])
@@ -32,6 +33,7 @@ def batch_responses(prompts, delay=0.25):
 
 
 if __name__ == "__main__":
+    apply_studio_style()
     st.title("Text Classifier")
     instruction = "Classify the following question into one of the following classes:"
     st.write(instruction)
@@ -58,4 +60,3 @@ if __name__ == "__main__":
         sorted_results = {k: v for k, v in sorted(results.items(), key=lambda x: x[1], reverse=True)}
         for name, prob in sorted_results.items():
             st.write(name, round(prob, 2))
-

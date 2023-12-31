@@ -3,3 +3,5 @@
 .streamlit/secrets.toml
 .python-version
 file/
+.DS_Store
+_pycache_/

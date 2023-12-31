@@ -31,6 +31,7 @@ def build_prompt(title, sections, section_heading):
     prompt = f"Write a descriptive section in a blog post according to the following details.\n\nBlog Title:\n{title}\n\nBlog Sections:\n{sections_text}\n\nCurrent Section Heading:\n{section_heading}\n\nCurrent Section Text:\n"
     return prompt
 
+
 def generate_sections_content(num_results, sections, title):
 
     loop = asyncio.new_event_loop()
@@ -49,6 +50,7 @@ def generate_sections_content(num_results, sections, title):
     results = loop.run_until_complete(group)
     loop.close()
     return results
+
 
 def build_generate_outline(title):
     return lambda: generate_outline(title)
@@ -116,8 +118,6 @@ def on_prev_click(section_heading, section_index, completions, arg_sorted_by_len
 
 def get_event_loop(title, sections, num_results):
     st.session_state['show_sections'] = True
-
-
 
     for s in sections:
         st.session_state['generated_sections_data'][s] = {}
@@ -199,6 +199,7 @@ def paraphrase(text, tone, times):
 
     return entire_text
 
+
 def on_paraphrase_click(s, tone, times):
 
     all_sections_data = st.session_state['generated_sections_data']
@@ -209,10 +210,9 @@ def on_paraphrase_click(s, tone, times):
     sec_text = section_completions[index]["data"]["text"]
     paraphrased_section = paraphrase(sec_text, tone, times)
 
-
-
     st.session_state['generated_sections_data'][s]["rewrites"][index] = paraphrased_section
     st.session_state['show_paraphrase'][s] = True
+
 
 def build_paraphrase(s, tone, times):
     return lambda: on_paraphrase_click(s, tone, times)
@@ -276,7 +276,7 @@ if __name__ == '__main__':
             section_completions = all_sections_data[s]["completions"]
             arg_sort = st.session_state['generated_sections_data'][s]["arg_sort"]
 
-            section_text_area_value = st.session_state['generated_sections_data'][s]["rewrites"][index] if st.session_state['show_paraphrase'][s] == True else  section_completions[
+            section_text_area_value = st.session_state['generated_sections_data'][s]["rewrites"][index] if st.session_state['show_paraphrase'][s] is True else section_completions[
                                                                                                             index]["data"]["text"]
             section_i_text = st.session_state['generated_sections_data'][s]["text_area_data"].text_area(label=s,
                                                                                                         height=300,
@@ -294,14 +294,11 @@ if __name__ == '__main__':
                 st.button("Paraphrase", on_click=build_paraphrase(s, tone="general", times=1),
                           key="paraphrase-button-" + s)
 
-
             with col3:
                 st.button("<", on_click=build_on_prev_click(s, i, section_completions, arg_sort), key="<" + s)
-
 
             with col4:
                 st.text(f"{index+1}/{num_results}")
 
             with col5:
                 st.button(">", on_click=build_on_next_click(s, i, section_completions, arg_sort), key=">" + s)
-

@@ -90,15 +90,15 @@ def parse_and_upload_file(uploaded_file):
 
 
 st.set_page_config(
-    page_title="Document Q&A",
+    page_title="Multi-Document Q&A",
 )
 
 if __name__ == '__main__':
     apply_studio_style()
-    st.title("Document Q&A")
-    st.markdown("**Upload a document**")
+    st.title("Multi-Document Q&A")
+    st.markdown("**Upload documents**")
     
-    uploaded_files = st.file_uploader("choose .pdf/.txt file ",
+    uploaded_files = st.file_uploader("choose .pdf/.txt file",
                                       accept_multiple_files=True,
                                       type=["pdf", "text", "txt"],
                                       key="a")
@@ -118,13 +118,13 @@ if __name__ == '__main__':
         else:
             st.write("No files to remove")
             
-    st.markdown("**Ask a question about the uploaded document**") 
+    st.markdown("**Ask a question about the uploaded documents**")
     question = st.text_input(label="Question:", value=DOC_QA)
 
     if st.button(label="Answer"):
         with st.spinner("Loading..."):
             if 'files_ids' not in st.session_state:
-                st.write("Please upload a document")
+                st.write("Please upload documents")
             else:
                 # response = ai21.Library.Answer.execute(question = question, fileIds = st.session_state['files_ids'] )
                 response = ai21.Library.Answer.execute(question=question)

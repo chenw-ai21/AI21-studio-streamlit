@@ -93,7 +93,7 @@ def toolbar():
 
 if __name__ == '__main__':
     apply_studio_style()
-    st.title("Marketing Generator")
+    st.title("Marketing Pitch Email Generator")
 
     st.session_state['title'] = st.text_input(label="Title", value=title_placeholder).strip()
     st.session_state['article'] = st.text_area(label="Article", value=article_placeholder, height=500).strip()
