@@ -4,5 +4,5 @@
 .python-version
 .DS_Store
 file/
-_pycache_/
+__pycache__/
 .devcontainer/
