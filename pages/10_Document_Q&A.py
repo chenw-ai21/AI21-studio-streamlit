@@ -72,7 +72,7 @@ def upload_file(files_paths):
     files_ids = []
     for file_path in files_paths:
         try:
-            files_ids.append(ai21.Library.Files.upload(file_path=file_path))
+            files_ids.append(ai21.Library.Files.upload(file_path=file_path).fileId)
             st.session_state['files_ids'] = files_ids
             st.session_state['file_uploaded'] = True
         except UnprocessableEntity:
@@ -96,28 +96,28 @@ if __name__ == '__main__':
     apply_studio_style()
     st.title("Document Q&A")
     st.markdown("**Upload a document**")
-    
+
     if 'file_uploaded' not in st.session_state:
         uploaded_file_g = st.file_uploader("choose .pdf/.txt file ", type=["pdf", "text", "txt"], key="a")
         if uploaded_file_g:
             parse_and_upload_file(uploaded_file_g)
     else:
         st.file_uploader("choose .pdf/.txt file ", type=["pdf", "text", "txt"], disabled=True, key='a')
-        st.write("Don't forget to remove your file before uploading a new one")
-        st.markdown("**Please remove your file before leaving...**")
+        # st.write("Don't forget to remove your file before uploading a new one")
+        # st.markdown("**Please remove your file before leaving...**")
         
-    if st.button("Remove file"):
-        if 'files_ids' in st.session_state:
-            for file_id in st.session_state['files_ids']:
-                with st.spinner("Loading..."):
-                    response = ai21.Library.Files.delete(file_id)
-            
-            st.write("files removed successfully")
-            del st.session_state['file_uploaded']
-            del st.session_state['files_ids']
-            st.experimental_rerun()
-        else:
-            st.write("No files to remove")
+    # if st.button("Remove file"):
+    #     if 'files_ids' in st.session_state:
+    #         for file_id in st.session_state['files_ids']:
+    #             with st.spinner("Loading..."):
+    #                 ai21.Library.Files.delete(f'{file_id}')
+    #
+    #         st.write("files removed successfully")
+    #         del st.session_state['file_uploaded']
+    #         del st.session_state['files_ids']
+    #         st.experimental_rerun()
+    #     else:
+    #         st.write("No files to remove")
             
     st.markdown("**Ask a question about the uploaded document**") 
     question = st.text_input(label="Question:", value=DOC_QA)
@@ -127,8 +127,7 @@ if __name__ == '__main__':
             if 'files_ids' not in st.session_state:
                 st.write("Please upload a document")
             else:
-                # response = ai21.Library.Answer.execute(question = question, fileIds = st.session_state['files_ids'] )
-                response = ai21.Library.Answer.execute(question=question)
+                response = ai21.Library.Answer.execute(question=question, fileIds=st.session_state['files_ids'])
                 st.session_state["answer"] = response['answer']
             
     if "answer" in st.session_state:
